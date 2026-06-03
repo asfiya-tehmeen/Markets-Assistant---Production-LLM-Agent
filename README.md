@@ -225,6 +225,3 @@ the distribution of which tools the agent actually reaches for.
 This is a portfolio/educational project. It does **not** provide financial advice and is not
 connected to any brokerage or live trading. Market data is illustrative.
 
-## License
-
-MIT
