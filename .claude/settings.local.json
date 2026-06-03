@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(py *)"
+      "PowerShell(py *)",
+      "PowerShell(docker compose *)"
     ]
   }
 }

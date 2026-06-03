@@ -25,8 +25,8 @@ LangFuse · React/TypeScript/Vite · Docker · GitHub Actions.
 ## Build status
 
 - [x] **Phase 0** — Repo skeleton + `/health`.
-- [ ] Phase 1 — Core agent (tools + LangGraph + `POST /ask`).
-- [ ] Phase 2 — Redis, PostgreSQL, LangFuse, Docker.
+- [x] **Phase 1** — Core agent (tools + LangGraph + `POST /ask`).
+- [x] **Phase 2** — Redis cache + rate limit, PostgreSQL persistence, optional LangFuse, Docker.
 - [ ] Phase 3 — Evaluation harness + CI gate.
 - [ ] Phase 4 — React/TypeScript frontend.
 - [ ] Phase 5 — Polish, tests, docs.
