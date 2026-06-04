@@ -11,7 +11,11 @@ venv/
 
 # Data / local stores
 backend/data/chroma/
+/data/
 *.sqlite3
+
+# Eval artifacts
+eval/report.json
 
 # Node / frontend
 node_modules/

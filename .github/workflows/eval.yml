@@ -1,1 +1,53 @@
-# CI regression gate running eval/run_eval.py. Wired up in Phase 3.
+name: eval-gate
+
+# Regression gate: runs the agent against eval/golden_set.jsonl and fails the build if the
+# pass rate drops below the threshold. Exercises the real LLM (Groq), so it needs the
+# GROQ_API_KEY repo secret. Redis/Postgres are not required — the agent degrades gracefully and
+# the ChromaDB knowledge base self-seeds on first query.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    # Skip on PRs from forks, which don't have access to secrets (the run would fail with no key).
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+    env:
+      LLM_PROVIDER: groq
+      LLM_MODEL: llama-3.3-70b-versatile
+      GROQ_BASE_URL: https://api.groq.com/openai/v1
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+      CHROMA_PERSIST_DIR: ./data/chroma
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r backend/requirements.txt
+
+      - name: Fail fast if GROQ_API_KEY is missing
+        run: |
+          if [ -z "$GROQ_API_KEY" ]; then
+            echo "::error::GROQ_API_KEY secret is not set; add it under repo Settings > Secrets."
+            exit 1
+          fi
+
+      - name: Run eval gate
+        run: python eval/run_eval.py --threshold 0.85 --report eval/report.json
+
+      - name: Upload eval report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: eval/report.json

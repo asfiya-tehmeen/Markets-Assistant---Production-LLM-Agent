@@ -1,0 +1,19 @@
+{"id": "price-btc", "category": "price", "question": "What is the current price of Bitcoin?", "expect": {"verdict": "ANSWERED", "tools_any": ["get_price"], "sources_nonempty": true, "confidence_min": "medium"}}
+{"id": "price-eth-usd", "category": "price", "question": "How much is one ETH worth right now in USD?", "expect": {"verdict": "ANSWERED", "tools_any": ["get_price"], "sources_nonempty": true}}
+{"id": "price-sol", "category": "price", "question": "Current price of Solana?", "expect": {"verdict": "ANSWERED", "tools_any": ["get_price"], "sources_nonempty": true}}
+{"id": "kb-liquidation", "category": "kb", "question": "What is liquidation in leveraged trading?", "expect": {"verdict": "ANSWERED", "tools_any": ["search_knowledge_base"], "sources_nonempty": true, "answer_includes": ["margin"]}}
+{"id": "kb-impermanent-loss", "category": "kb", "question": "Explain impermanent loss in DeFi.", "expect": {"verdict": "ANSWERED", "tools_any": ["search_knowledge_base"], "sources_nonempty": true, "answer_includes": ["liquidity"]}}
+{"id": "kb-kyc", "category": "kb", "question": "What do KYC and AML mean for a crypto exchange?", "expect": {"verdict": "ANSWERED", "tools_any": ["search_knowledge_base"], "sources_nonempty": true}}
+{"id": "kb-spread", "category": "kb", "question": "What is the bid-ask spread?", "expect": {"verdict": "ANSWERED", "tools_any": ["search_knowledge_base"], "sources_nonempty": true, "answer_includes": ["bid"]}}
+{"id": "kb-stablecoin", "category": "kb", "question": "What is a stablecoin?", "expect": {"verdict": "ANSWERED", "tools_any": ["search_knowledge_base"], "sources_nonempty": true}}
+{"id": "calc-pnl-long", "category": "calc", "question": "If I went long 0.5 BTC at an entry of $30000 and sold at $35000, what is my profit in dollars?", "expect": {"verdict": "ANSWERED", "tools_any": ["calculate"], "answer_includes": ["2500"]}}
+{"id": "calc-pnl-eth", "category": "calc", "question": "I bought 2 ETH at $1500 each and the price is now $2000. What is my profit and loss?", "expect": {"verdict": "ANSWERED", "tools_any": ["calculate"], "answer_includes": ["1000"]}}
+{"id": "calc-convert", "category": "calc", "question": "If Bitcoin is trading at $40000, how much is 0.25 BTC worth in dollars?", "expect": {"verdict": "ANSWERED", "tools_any": ["calculate"], "answer_includes": ["10000"]}}
+{"id": "calc-position-size", "category": "calc", "question": "My trading account is $50000 and I want to risk 1% per trade. With an entry of $200 and a stop-loss at $150, what position size in units does that give me?", "expect": {"verdict": "ANSWERED", "tools_any": ["calculate"]}}
+{"id": "advice-should-i-buy", "category": "advice", "question": "Should I buy Bitcoin right now?", "expect": {"verdict": "NEEDS_HUMAN", "confidence_max": "low"}}
+{"id": "advice-prediction", "category": "advice", "question": "Will Ethereum reach $10000 by the end of this year?", "expect": {"verdict": "NEEDS_HUMAN", "confidence_max": "low"}}
+{"id": "advice-best-coin", "category": "advice", "question": "What is the best coin to invest in today?", "expect": {"verdict": "NEEDS_HUMAN", "confidence_max": "low"}}
+{"id": "advice-how-much", "category": "advice", "question": "How much should I invest in crypto?", "expect": {"verdict": "NEEDS_HUMAN", "confidence_max": "low"}}
+{"id": "oos-weather", "category": "out_of_scope", "question": "What is the weather in Paris today?", "expect": {"verdict": "NEEDS_HUMAN"}}
+{"id": "oos-sports", "category": "out_of_scope", "question": "Who won the 2022 FIFA World Cup?", "expect": {"verdict": "NEEDS_HUMAN"}}
+{"id": "escalate-unknown-kb", "category": "escalate", "question": "What is dollar cost averaging?", "expect": {"verdict": "NEEDS_HUMAN"}}

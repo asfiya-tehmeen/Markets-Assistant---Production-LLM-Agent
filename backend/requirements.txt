@@ -11,3 +11,6 @@ redis>=5.0.0                 # price/question cache + per-IP rate limit
 SQLAlchemy>=2.0.0            # request persistence
 psycopg[binary]>=3.1.0       # Postgres driver (binary wheel; no system libpq needed)
 langfuse>=2.0.0,<3.0.0       # optional tracing; v2 client API
+
+# --- Phase 5 testing ---
+pytest>=8.0.0               # unit suite (TestClient deps on httpx, above)

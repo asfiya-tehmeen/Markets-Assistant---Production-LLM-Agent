@@ -22,6 +22,9 @@ _ADVICE_PATTERNS = [
     r"\bhow much should i invest",
     r"\bis (now|it) a good time to (buy|sell|invest)",
     r"\b(which|what) (coin|crypto|token|asset) should i",
+    # "what is the best coin to invest in", "which token to buy", "top crypto to hold"
+    r"\b(best|top|which|what) (coin|crypto|cryptocurrency|token|asset|stock)s? "
+    r"(to (buy|invest|trade|hold|pick|get)|should i)",
 ]
 
 _SYSTEM = (

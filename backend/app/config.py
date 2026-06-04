@@ -41,6 +41,14 @@ class Settings:
         self.langfuse_secret_key: str = os.getenv("LANGFUSE_SECRET_KEY", "")
         self.langfuse_host: str = os.getenv("LANGFUSE_HOST", "https://cloud.langfuse.com")
 
+        # --- CORS (frontend origins allowed to call the API) ---
+        # Comma-separated list; defaults cover the Vite dev server and a local served build.
+        self.cors_allow_origins: list[str] = [
+            o.strip() for o in os.getenv(
+                "CORS_ALLOW_ORIGINS", "http://localhost:5173,http://localhost:4173"
+            ).split(",") if o.strip()
+        ]
+
 
 @lru_cache
 def get_settings() -> Settings:

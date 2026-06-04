@@ -7,11 +7,13 @@ absent, so the endpoint never crashes.
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from app.agent.graph import run_agent
 from app.cache import cache_answer, check_rate_limit, get_cached_answer
+from app.config import get_settings
 from app.db import init_db, log_request
 
 
@@ -23,6 +25,14 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Markets Assistant", version="0.2.0", lifespan=lifespan)
+
+# Allow the browser frontend (different origin in dev) to call the API.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=get_settings().cors_allow_origins,
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
 
 
 class AskRequest(BaseModel):

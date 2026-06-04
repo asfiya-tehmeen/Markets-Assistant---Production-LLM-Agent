@@ -1,6 +1,6 @@
-# Full backend stack: api + postgres + redis. Brings everything up with:
+# Full stack: frontend + api + postgres + redis. Brings everything up with:
 #   docker compose up --build
-# The frontend service is added in Phase 4.
+# Then open the UI at http://localhost:8080 (it proxies /ask and /health to the api service).
 
 services:
   postgres:
@@ -45,6 +45,13 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
 
 volumes:
   pgdata:
