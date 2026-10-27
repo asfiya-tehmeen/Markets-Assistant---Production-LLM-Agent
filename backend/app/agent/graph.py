@@ -26,7 +26,9 @@ _ROUTER_SYSTEM = (
     "You are Markets Assistant's router. Decide which tools to call to gather what's needed to "
     "answer the user's finance/markets question. Use search_knowledge_base for concepts, "
     "definitions, and regulatory questions; get_price for current crypto prices; calculate for "
-    "P/L, position sizing, and conversions. You may call several tools, including in parallel. "
+    "P/L, position sizing, and conversions. ALWAYS call calculate for any arithmetic, including "
+    "simple unit<->dollar conversions such as 'how much is 0.25 BTC worth at $40000'; never do "
+    "math yourself. You may call several tools, including in parallel. "
     "If the question is out of scope (not finance/markets) or asks for personalized investment "
     "advice, you may answer without tools. Once you have enough information, stop calling tools."
 )

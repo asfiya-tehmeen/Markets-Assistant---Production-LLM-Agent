@@ -5,17 +5,14 @@ name: eval-gate
 # GROQ_API_KEY repo secret. Redis/Postgres are not required — the agent degrades gracefully and
 # the ChromaDB knowledge base self-seeds on first query.
 
+# Manual only: it spends LLM quota and depends on live APIs, so run it from the Actions tab
+# ("Run workflow") instead of on every push.
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
 
 jobs:
   eval:
     runs-on: ubuntu-latest
-    # Skip on PRs from forks, which don't have access to secrets (the run would fail with no key).
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
     env:
       LLM_PROVIDER: groq
       LLM_MODEL: llama-3.3-70b-versatile

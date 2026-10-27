@@ -52,7 +52,10 @@ def ask(req: AskRequest, request: Request):
     Pipeline: rate-limit -> question cache -> agent -> cache + persist. Always returns 200
     except for 429 when the per-IP limit is exceeded.
     """
-    client_ip = request.client.host if request.client else "unknown"
+    # Behind nginx/Vercel/Render the socket peer is the proxy, so prefer the forwarded client IP.
+    # Note: the leftmost X-Forwarded-For entry is client-supplied and can be spoofed.
+    forwarded = request.headers.get("x-forwarded-for", "").split(",")[0].strip()
+    client_ip = forwarded or (request.client.host if request.client else "unknown")
 
     allowed, remaining = check_rate_limit(client_ip)
     if not allowed:

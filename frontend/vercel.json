@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/ask", "destination": "https://YOUR-BACKEND-HOST/ask" },
+    { "source": "/health", "destination": "https://YOUR-BACKEND-HOST/health" }
+  ]
+}
