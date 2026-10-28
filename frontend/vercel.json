@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/ask", "destination": "https://YOUR-BACKEND-HOST/ask" },
-    { "source": "/health", "destination": "https://YOUR-BACKEND-HOST/health" }
+    { "source": "/ask", "destination": "https://markets-assistant-production-llm-agent.onrender.com/ask" },
+    { "source": "/health", "destination": "https://markets-assistant-production-llm-agent.onrender.com/health" }
   ]
 }

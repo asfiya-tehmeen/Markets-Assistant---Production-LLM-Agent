@@ -17,7 +17,7 @@ class Settings:
 
     def __init__(self) -> None:
         self.llm_provider: str = os.getenv("LLM_PROVIDER", "groq")
-        self.llm_model: str = os.getenv("LLM_MODEL", "llama-3.3-70b-versatile")
+        self.llm_model: str = os.getenv("LLM_MODEL", "openai/gpt-oss-120b")
         self.groq_api_key: str = os.getenv("GROQ_API_KEY", "")
         self.groq_base_url: str = os.getenv("GROQ_BASE_URL", "https://api.groq.com/openai/v1")
         self.anthropic_api_key: str = os.getenv("ANTHROPIC_API_KEY", "")

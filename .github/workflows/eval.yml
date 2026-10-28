@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       LLM_PROVIDER: groq
-      LLM_MODEL: llama-3.3-70b-versatile
+      LLM_MODEL: openai/gpt-oss-120b
       GROQ_BASE_URL: https://api.groq.com/openai/v1
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
